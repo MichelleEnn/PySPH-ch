@@ -4,7 +4,7 @@
 
 PySPH托管在[github上](http://github.com/pypr/pysph)。请参阅[github](http://github.com/pypr/pysph)网站以获取开发细节。
 
-[TOC]
+
 
 ## 总览
 
@@ -232,7 +232,7 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 - 支持Python-3.4.x。
 - 支持Python-2.6.x。
 
-*1.0a1*
+**1.0a1**
 
 - 发布日期：2015年6月3日。
 - 新的PySPH代码首次公开发布，该代码使用代码生成并托管在[bitbucket上](http://bitbucket.org/pysph/pysph)。
