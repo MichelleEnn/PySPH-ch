@@ -108,12 +108,12 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 
 ### 变更日志
 
-#### 1.0b1
+**1.0b1**
 
 - 发布日期：仍在开发中。
 - 将pyzoltan，cyarray移到pypi上自己的软件包中。
 
-#### 1.0a6
+**1.0a6**
 
 此版本已合并90个拉取请求。感谢以下对此发布做出贡献的人员（按字母顺序排列）：A Dinesh，Abhinav Muta，Aditya Bhosale，Ananyo Sen，Deep Tavker，Prabhu Ramachandran，Vikas Kurapati，nilsmeyerkit，Rahul Govind，Sanka Suraj。
 
@@ -151,7 +151,7 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
   - 修复WCSPH方案中的实体错误。
   - 沿z轴定期修复错误。
 
-#### 1.0a5
+**1.0a5**
 
 - 发布日期：2017年9月17日
 - Mayavi Viewer现在支持空粒子阵列。
@@ -177,7 +177,7 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 - 更新构建，以便可以使用`USE_TRILINOS`环境变量使用系统zoltan安装来构建pysph，该安装是trilinos的一部分。
 - 将`Zoltan_Comm_Resize`功能包装在中`pyzoltan`。
 
-#### 1.0a4
+**1.0a4**
 
 - 发布日期：2016年7月14日。
 - 改进许多示例，使其更易于进行比较。
@@ -204,7 +204,7 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 - 使用输出中转储的timestep值修复错误。
 - 修复带有时间步的浮点问题，在示例中，示例将运行最终的极短时间步以精确达到最终时间。
 
-#### 1.0a3
+**1.0a3**
 
 - 发布日期：2015年8月18日。
 - 使用`output_at_times`求解程序规范修复错误。
@@ -221,7 +221,7 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 - 移植所有示例以使用新的`Application`API。
 - 没有错误时不要显示不必要的编译器警告，而在有错误时不要显示详细信息。
 
-#### 1.0a2
+**1.0a2**
 
 - 发布日期：2015年6月12日
 - 对[tox的](https://pypi.python.org/pypi/tox)支持，这使得在py26，py27和py34上测试PySPH变得轻而易举（如果需要，还可以进行更多测试）。
@@ -232,7 +232,7 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 - 支持Python-3.4.x。
 - 支持Python-2.6.x。
 
-#### 1.0a1
+**1.0a1**
 
 - 发布日期：2015年6月3日。
 - 新的PySPH代码首次公开发布，该代码使用代码生成并托管在[bitbucket上](http://bitbucket.org/pysph/pysph)。
