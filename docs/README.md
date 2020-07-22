@@ -4,7 +4,7 @@
 
 PySPH托管在[github上](http://github.com/pypr/pysph)。请参阅[github](http://github.com/pypr/pysph)网站以获取开发细节。
 
-
+[TOC]
 
 ## 总览
 
@@ -246,3 +246,8 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 - 各种SPH配方的大量示例。
 - 改进了文档。
 - 持续集成基础上[可发运](https://app.shippable.com/projects/540e849c3479c5ea8f9f030e/builds/latest)， [Drone.io](https://drone.io/bitbucket.org/pysph/pysph)和[AppVeyor](https://ci.appveyor.com/project/prabhuramachandran/pysph)
+
+
+
+## 安装和入门
+
