@@ -25,7 +25,7 @@ PySPH托管在[github上](http://github.com/pypr/pysph)。请参阅[github](http
 
 - 自由表面流动的[弱可压缩SPH（WCSPH）](http://www.tandfonline.com/doi/abs/10.1080/00221686.2010.9641250)（Gesteira等，2010，《水力研究杂志》，48，第6–27页）
 
-  ![3D大坝突破障碍SPHERIC基准[测试2](https://wiki.manchester.ac.uk/spheric/index.php/Test2)](https://pysph.readthedocs.io/en/latest/_images/db3d.png)
+  ![3D大坝突破障碍SPHERIC基准(https://wiki.manchester.ac.uk/spheric/index.php/Test2)](https://pysph.readthedocs.io/en/latest/_images/db3d.png)
 
 - 不可压缩流体的[传输速度公式](http://dx.doi.org/10.1016/j.jcp.2013.01.043)（Adami等人，2013，JCP，241，第292-307页）。
 
@@ -251,3 +251,354 @@ PySPH主要由[孟买IIT航空航天工程系](http://www.aero.iitb.ac.in/)开�
 
 ## 安装和入门
 
+要安装PySPH，您需要一个可运行的Python环境，并安装了必需的依赖项。您可以使用任何可用的Python发行版。目前，PySPH已通过Python-2.7.x和3.x进行了测试。如果您不[熟悉](https://www.enthought.com/products/canopy/) Python，我们建议使用[Enthought Canopy](https://www.enthought.com/products/canopy/)或[EDM](https://www.enthought.com/products/edm/)。PySPH可以在 [Miniconda_](https://pysph.readthedocs.io/en/latest/installation.html#id24)，[Anaconda](http://continuum.io/downloads)或[WinPython](http://winpython.sourceforge.net/)等其他环境下[正常工作](http://winpython.sourceforge.net/)。以下说明应帮助您入门。
+
+由于有大量的信息在这里，我们建议您略读的部分[依赖](https://pysph.readthedocs.io/en/latest/installation.html#dependencies)，然后直接跳转到“XXX上安装的依赖关系”部分之一下面根据您的操作系统上。根据您选择的Python发行版，只需遵循其中引用的说明和链接。
+
+- [快速安装](https://pysph.readthedocs.io/en/latest/installation.html#quick-installation)
+- [依存关系](https://pysph.readthedocs.io/en/latest/installation.html#dependencies)
+- [在GNU / Linux上安装依赖项](https://pysph.readthedocs.io/en/latest/installation.html#installing-the-dependencies-on-gnu-linux)
+- [在Ubuntu 18.04上安装依赖项](https://pysph.readthedocs.io/en/latest/installation.html#installing-the-dependencies-on-ubuntu-18-04)
+- [在Mac OS X上安装依赖项](https://pysph.readthedocs.io/en/latest/installation.html#installing-the-dependencies-on-mac-os-x)
+- [在Windows上安装依赖项](https://pysph.readthedocs.io/en/latest/installation.html#installing-the-dependencies-on-windows)
+- [对PySPH使用virtualenv](https://pysph.readthedocs.io/en/latest/installation.html#using-a-virtualenv-for-pysph)
+- [下载PySPH](https://pysph.readthedocs.io/en/latest/installation.html#downloading-pysph)
+- [编译和安装PySPH](https://pysph.readthedocs.io/en/latest/installation.html#building-and-installing-pysph)
+- [运行测试](https://pysph.readthedocs.io/en/latest/installation.html#running-the-tests)
+- [运行示例](https://pysph.readthedocs.io/en/latest/installation.html#running-the-examples)
+- [查看器可能存在的问题](https://pysph.readthedocs.io/en/latest/installation.html#possible-issues-with-the-viewer)
+
+
+
+### 快速安装
+
+如果您对安装Python软件包有一定的经验，已经在计算机上安装了C ++编译器，并且对在多个CPU上运行PySPH（使用MPI）不感兴趣，那么安装PySPH很简单。像这样简单地运行[pip](http://www.pip-installer.org/)：
+
+```
+$ pip install PySPH
+```
+
+应该可以。您可以选择在[virtualenv中](http://www.virtualenv.org/)执行此操作。重要示例与源代码打包在一起，您应该能够立即运行它们。如果您希望下载源代码并进行探索，则可以使用tarball / ZIP或从git下载源代码，请参阅 [下载PySPH](https://pysph.readthedocs.io/en/latest/installation.html#downloading-pysph)。
+
+上面将安装PySPH的最新发布版本，您可以使用以下方法安装开发版本：
+
+```
+$ pip install https://github.com/pypr/pysph/zipball/master
+```
+
+如果您希望跟踪软件包的开发，请克隆存储库（如[下载PySPH中](https://pysph.readthedocs.io/en/latest/installation.html#downloading-pysph)所述，然后执行以下操作：
+
+```
+$ pip install -r requirements.txt
+$ python setup.py develop
+```
+
+以下说明更加详细，还显示了如何安装可选依赖项。下面也提供了有关如何在Windows上进行设置的说明。
+
+如果在使用ZOLTAN进行安装时遇到了奇怪的问题，请参见此处pip-cache-issues。
+
+### 依存关系
+
+#### 核心依存关系
+
+核心依赖项是：
+
+- [NumPy](http://numpy.scipy.org/)
+- [Cython](http://www.cython.org/)（0.20及更高版本）
+- [Mako](https://pypi.python.org/pypi/Mako)（Python模版库）
+- [cyarray](https://pypi.python.org/pypi/cyarray)（Python数组）
+- [compyle](https://pypi.python.org/pypi/compyle)
+- [pytest ](https://www.pytest.org/)用于运行单元测试。
+
+项目的[requirements.txt](https://github.com/pypr/pysph/tree/master/requirements.txt)列出了所有必需的核心依赖项。
+
+
+
+这些软件包可以从Python发行版的软件包管理器安装，也可以使用[pip安装](http://www.pip-installer.org/)。有关如何针对不同发行版执行此操作的详细说明，请参见下文。
+
+运行PySPH需要在您的计算机上运行C / C ++编译器。在Linux / OS X上，gcc工具链将运行良好。在Windows上，您需要安装合适的MSVC编译器，有关详细信息，请参阅https://wiki.python.org/moin/WindowsCompilers。
+
+例如，在Python 2.7上，您将需要[用于Python 2.7的Microsoft Visual C ++编译器](http://www.microsoft.com/en-us/download/details.aspx?id=44266) 或等效的编译器。下面提供了更多详细信息。
+
+> 注意：PySPH生成高性能代码并即时对其进行编译。即使在安装PySPH之后，这也需要一个可用的C / C ++编译器。
+
+
+
+#### 可选依赖项
+
+可选的依赖项是：
+
+- [OpenMP](http://openmp.org/)：PySPH可以使用OpenMP（如果可用）。安装说明如下。
+- [PyOpenCL](https://documen.tician.de/pyopencl/)：如果可用，PySPH可以使用OpenCL。这需要安装[PyOpenCL](https://documen.tician.de/pyopencl/)。
+- [Mayavi](http://code.enthought.com/projects/mayavi)：PySPH提供了一个方便的查看器，以可视化模拟的输出。可以使用以下命令启动该查看器， 并且需要安装[Mayavi](http://code.enthought.com/projects/mayavi)。由于这只是一个查看器，因此它是可选使用的，但是，由于查看器非常方便，因此强烈建议您安装它。`pysph view`
+- [mpi4py](http://mpi4py.scipy.org/)和[Zoltan](http://www.cs.sandia.gov/zoltan/)：如果要并行使用PySPH，则将需要 [mpi4py](http://mpi4py.scipy.org/)和[Zoltan](http://www.cs.sandia.gov/zoltan/)数据管理库以及[PyZoltan](https://github.com/pypr/pyzoltan) 软件包。PySPH将在没有[mpi4py](http://mpi4py.scipy.org/)或[Zoltan的](http://www.cs.sandia.gov/zoltan/)情况下[连续](http://mpi4py.scipy.org/)工作。Zoltan的简单构建说明如下。
+
+[Mayavi](http://code.enthought.com/projects/mayavi)与所有主要发行版打包在一起，并且易于安装。 [Zoltan](http://www.cs.sandia.gov/zoltan/)不太可能已经打包，需要进行编译。
+
+
+
+**在OSX / Linux上构建和链接PyZoltan**
+
+如果要并行使用PySPH，则需要安装[PyZoltan](https://github.com/pypr/pyzoltan)。PyZoltan要求Zoltan库可用。我们在 [PyZoltan](https://github.com/pypr/pyzoltan)储存库中提供了一个简单的 [Zoltan构建脚本](https://github.com/pypr/pyzoltan/blob/master/build_zoltan.sh)。这适用于Linux和OS X，但不适用于Windows。它可以用作：
+
+```
+$ ./build_zoltan.sh $INSTALL_PREFIX
+```
+
+其中`$INSTALL_PREFIX`就是图书馆，包括将被安装（记住，这个脚本是在PyZoltan存储库，而不是在PySPH）。您可以编辑并调整构建以适合您的安装。但是，此脚本是我们用于在[Travis-CI](http://travis-ci.org/)和[Shippable的](http://shippable.com/)连续集成服务器上构建Zoltan的工具。
+
+在构建Zoltan之后，将环境变量设置`ZOLTAN`为指向 `$INSTALL_PREFIX`您在上面使用的：
+
+```
+$ export ZOLTAN=$INSTALL_PREFIX
+```
+
+请注意，用`$INSTALL_PREFIX`上面指定的目录替换。之后，请按照说明构建PyZoltan。PyZoltan包装器将被编译并可用。
+
+现在，当您构建PySPH时，它也需要知道链接到Zoltan的位置，并且应该保持`ZOLTAN`环境变量的设置。仅在编译PySPH之前需要这样做，此后我们就不需要环境变量了。
+
+如果在使用ZOLTAN设置pysph时遇到了奇怪的问题，请参见此处pip-cache-issues。
+
+
+
+>如果这些目录由于某种原因对您的特定安装不起作用，则安装将使用`$ZOLTAN/include`并`$ZOLTAN/lib`查找实际目录，请设置环境变量， `ZOLTAN_INCLUDE`并`ZOLTAN_LIBRARY`显式地不进行设置 `ZOLTAN`。如果使用上述脚本，则将是：
+>
+>```
+>$ export ZOLTAN_INCLUDE=$INSTALL_PREFIX/include
+>$ export ZOLTAN_LIBRARY=$INSTALL_PREFIX/lib
+>```
+
+
+
+## 在GNU / Linux上安装依赖项
+
+如果您使用的是[Enthought Canopy ](https://www.enthought.com/products/canopy/)[EDM](https://www.enthought.com/products/edm/)或[Anaconda](http://continuum.io/downloads)，则[在Mac OS X上安装依赖项](https://pysph.readthedocs.io/en/latest/installation.html#installing-deps-osx)一节中的说明将非常有用，因为这些说明是相同的。以下是针对您希望使用随所使用的Linux发行版一起发行的本机Python软件包的情况。
+
+如果遇到麻烦，请注意，使用[EDM](https://www.enthought.com/products/edm/)（请参阅[使用EDM](https://pysph.readthedocs.io/en/latest/installation.html#using-edm-osx)）或conda（请参阅[使用Anaconda](https://pysph.readthedocs.io/en/latest/installation.html#using-conda-osx)）非常容易安装， 并且可以使您的生活更轻松。
+
+GNU / Linux可能是安装PySPH的最简单平台。在Ubuntu上，可以使用以下命令安装依赖项：
+
+```
+$ sudo apt-get install build-essential python-dev python-numpy \
+    python-mako cython python-pytest mayavi2 python-qt4 python-virtualenv
+```
+
+[OpenMP](http://openmp.org/)通常是可用的，但如果没有，则可以通过以下方式安装：
+
+```
+$ sudo apt-get install libomp-dev
+```
+
+如果需要并行支持：
+
+```
+$ sudo apt-get install libopenmpi-dev python-mpi4py
+$ ./build_zoltan.sh ~/zoltan # Replace ~/zoltan with what you want
+$ export ZOLTAN=~/zoltan
+```
+
+在Linux上，最好将PySPH安装到其自己的虚拟环境中。这将允许您以没有任何超级用户权限的用户身份安装PySPH。请参阅以下有关在[PySPH中使用virtualenv的部分](https://pysph.readthedocs.io/en/latest/installation.html#using-virtualenv)。简而言之，请执行以下操作：
+
+```
+$ virtualenv --system-site-packages pysph_env
+$ source pysph_env/bin/activate
+$ pip install cython --upgrade # if you have an old version.
+```
+
+如果要使用当前不是默认编译器的编译器，只需更新`CC`和`CXX`环境变量。例如，要使用icc，请在构建PySPH 之前运行以下命令：
+
+```
+$ export CC=icc
+$ export CXX=icpc
+```
+
+> 注意:在这种情况下，您还必须确保在运行 PySPH代码时可以找到相关的intel共享库。大多数intel安装都附带了shell脚本，这些脚本会自动以正确的值加载相关的环境变量。该Shell脚本通常被命名为`compilervars.sh`，可以在中找到 `/path/to/icc/bin`。如果安装时未获得此文件，则可以尝试运行。`export LD_LIBRARY_PATH=/path/to/icc/lib`
+
+您现在应该设置，并且应该跳到“ [下载PySPH](https://pysph.readthedocs.io/en/latest/installation.html#downloading-pysph)以及 [构建和安装PySPH”](https://pysph.readthedocs.io/en/latest/installation.html#building-pysph)。
+
+在最新版本的Ubuntu（16.10和18.04）上，Mayavi viewer可能存在问题，并且可能无法正常工作。要查看如何解决这些问题，请[使用查看器查看可能的问题](https://pysph.readthedocs.io/en/latest/installation.html#viewer-issues)。`pysph view`
+
+注意
+
+> 如果您希望查看有效的构建/测试脚本，请参阅我们的 [shippable.yml](https://github.com/pypr/pysph/tree/master/shippable.yml)。
+
+
+
+## 在Ubuntu 18.04上安装依赖项
+
+在Ubuntu 18.04上，使用ZOLTAN安装PySPH应该相对简单，如下所示：
+
+```
+# For OpenMP
+$ sudo apt-get install libomp-dev
+
+# For Zoltan
+$ sudo apt-get install openmpi-bin libopenmpi-dev libtrilinos-zoltan-dev
+
+$ export ZOLTAN_INCLUDE=/usr/include/trilinos
+$ export ZOLTAN_LIBRARY=/usr/lib/x86_64-linux-gnu
+$ export USE_TRILINOS=1
+```
+
+现在，根据您的设置，您可以安装Python相关的依赖项。例如，使用[conda_，](https://pysph.readthedocs.io/en/latest/installation.html#id26)您可以执行以下操作：
+
+```
+$ conda install -c conda-forge cython mako matplotlib jupyter pyside pytest \
+                   mock numpy-stl pytools
+
+$ conda install -c conda-forge mpi4py
+```
+
+然后，您应该能够使用以下命令安装pyzoltan及其依赖项cyarray：
+
+```
+$ pip install pyzoltan
+```
+
+最后，使用以下命令安装PySPH：
+
+```
+$ pip install pysph
+```
+
+或搭配：
+
+```
+$ pip install --no-cache-dir pysph
+```
+
+如果您由于pip-cache-issues中讨论的pip缓存而遇到麻烦 。
+
+您现在应该已经准备就绪，接下来应该考虑[运行测试](https://pysph.readthedocs.io/en/latest/installation.html#running-the-tests)。
+
+
+
+## 在Mac OS X上安装依赖项
+
+在OS X上，最好的选择是安装[Enthought Canopy](https://www.enthought.com/products/canopy/)，[EDM](https://www.enthought.com/products/edm/)或[Anaconda](http://continuum.io/downloads) 或其他一些Python发行版。通过安装XCode确保已安装gcc或clang。见[这个](http://stackoverflow.com/questions/12228382/after-install-xcode-where-is-clang) ，如果你安装了XCode，但无法找到铛或GCC。
+
+如果您收到以下形式的奇怪错误：
+
+```
+lang: warning: libstdc++ is deprecated; move to libc++ with a minimum deployment target of OS X 10.9 [-Wdeprecated]
+ld: library not found for -lstdc++
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+然后尝试一下（在bash shell上）：
+
+```
+$ export MACOSX_DEPLOYMENT_TARGET=10.9
+```
+
+并再次运行您的命令（将以上内容替换为其他shell上的相应行）。这是必要的，因为您的Python是使用较旧的部署目标进行编译的，并且您安装的当前XCode版本与此不兼容。通过设置环境变量，您可以允许compyle使用较新的版本。如果可行，最好在默认环境中（`.bashrc`对于bash shell）进行设置，这样就不必每次都这样做。
+
+### OSX上的OpenMP
+
+MacOS上可用的默认clang编译器使用LLVM后端，不支持[OpenMP](http://openmp.org/)。有两种支持OpenMP的方法。首先涉及为clang安装OpenMP支持。可以使用以下命令执行[brew](http://brew.sh/)：
+
+```
+$ brew install libomp
+```
+
+一旦完成，它应该“正常工作”。如果遇到奇怪的错误，请尝试`MACOSX_DEPLOYMENT_TARGET`如上所示设置。
+
+另一种选择是安装GCC对现有的MacOS brew(http://brew.sh/)使用
+
+```
+$ brew install gcc
+```
+
+完成此操作后，您需要将其用作默认编译器。`gcc` brew上的公式当前随gcc版本9一起提供。因此，您可以通过设置以下内容来告知Python使用brew安装的GCC：
+
+```
+$ export CC=gcc-9
+$ export CXX=g++-9
+```
+
+请注意，您仍然需要为XCode安装命令行工具，否则重要的头文件将不可用。有关 更多详细信息，请参见 [如何安装xcode命令行工具](https://stackoverflow.com/questions/9329243/how-to-install-xcode-command-line-tools)。您可能还需要在自己的环境中设置这些环境变量， `.bashrc`因此不必每次都这样做。
+
+完成此操作后，compyle将自动使用此版本的GCC，并将其与OpenMP一起使用。请注意，在一些初步基准测试中，GCC的OpenMP实施似乎比LLVM版本快10％左右。你的情况可能会改变。
+
+
+
+### 使用EDM
+
+使用Enthought Deployment Manager（[EDM](https://www.enthought.com/products/edm/)）安装所有依赖项非常容易。
+
+- 如果尚未[安装EDM安装程序](https://www.enthought.com/products/edm/installers)，请[下载](https://www.enthought.com/products/edm/installers)它。为您的系统安装适当的安装程序包。
+
+- 一旦安装了EDM，请运行以下命令：
+
+  ```
+  $ edm install mayavi pyside cython matplotlib jupyter pytest mock pip
+  $ edm shell
+  $ pip install mako
+  ```
+
+- 完成此操作后，您应该能够相对轻松地安装PySPH，请参阅“ [构建和安装PySPH”](https://pysph.readthedocs.io/en/latest/installation.html#building-pysph)。
+
+### 使用Canopy
+
+下载适合您平台的Canopy Express安装程序（也可以使用完整的安装程序）。安装后启动Canopy，以初始化您的用户环境。如果您已将Canopy设置为默认的Python，那么一切都会很好，否则请从Canopy编辑器的“工具”菜单中启动Canopy终端，然后在下面键入命令。
+
+[NumPy](http://numpy.scipy.org/)默认情况下发货，但[Cython](http://www.cython.org/)不[发货](http://www.cython.org/)。[Mako](https://pypi.python.org/pypi/Mako)和Cython可以`pip`轻松安装（`pip`将在Canopy环境中可用）：
+
+```
+$ pip install cython mako
+```
+
+[Mayavi](http://code.enthought.com/projects/mayavi)最好与Canopy软件包管理器一起安装：
+
+```
+$ enpkg mayavi
+```
+
+> 注意：如果您是订阅者，则还可以安装Enthought的内部版本。`enpkg cython`
+
+如果需要并行支持，请参阅[在OS X上安装mpi4py和Zoltan](https://pysph.readthedocs.io/en/latest/installation.html#installing-mpi-osx)，否则，请跳至[下载PySPH](https://pysph.readthedocs.io/en/latest/installation.html#downloading-pysph)并[构建和安装PySPH](https://pysph.readthedocs.io/en/latest/installation.html#building-pysph)。
+
+
+
+### 使用Anaconda
+
+安装Anaconda或[miniconda_之后](https://pysph.readthedocs.io/en/latest/installation.html#id28)，您需要确保已安装依赖项。您可以创建一个单独的环境，如下所示：
+
+```
+$ conda create -n pysph_env
+$ source activate pysph_env
+```
+
+现在，您可以安装必要的软件包：
+
+```
+$ conda install -c conda-forge cython mako matplotlib jupyter pyside pytest mock
+$ conda install -c menpo mayavi
+```
+
+如果需要并行支持，请参阅[在OS X上安装mpi4py和Zoltan](https://pysph.readthedocs.io/en/latest/installation.html#installing-mpi-osx)，否则，请跳至[下载PySPH](https://pysph.readthedocs.io/en/latest/installation.html#downloading-pysph)并[构建和安装PySPH](https://pysph.readthedocs.io/en/latest/installation.html#building-pysph)。
+
+
+
+### 在OS X上安装mpi4py和Zoltan
+
+为了构建/安装[mpi4py，](http://mpi4py.scipy.org/)首先必须安装MPI库。可以通过[Homebrew](http://brew.sh/)轻松完成以下操作（您需要为此进行`brew` 安装，但这相对容易做到）：
+
+```
+$ sudo brew install open-mpi
+```
+
+完成此操作后，您可以手动安装mpi4py。首先从[这里](https://pypi.python.org/pypi/mpi4py)下载mpi4py 。然后运行以下命令（修改它们以适合您的XCode安装和mpi4py版本）：
+
+```
+$ cd /tmp
+$ tar xvzf ~/Downloads/mpi4py-1.3.1.tar.gz
+$ cd mpi4py-1.3.1
+$ export MACOSX_DEPLOYMENT_TARGET=10.7
+$ export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/
+$ python setup.py install
+```
+
+更改以上环境变量以适合您的SDK版本。如果安装正确，则mpi4py应该可用。
+
+然后，您可以按照上面给出的有关如何构建/安装Zoltan和PyZoltan的说明进行操作。您现在应该设置，并且应该进入 [构建和安装PySPH](https://pysph.readthedocs.io/en/latest/installation.html#building-pysph)。只要确保已设置`ZOLTAN`环境变量，PySPH就会知道在哪里可以找到它。
