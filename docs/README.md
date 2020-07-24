@@ -370,7 +370,7 @@ $ export ZOLTAN=$INSTALL_PREFIX
 
 
 
-## 在GNU / Linux上安装依赖项
+### 在GNU / Linux上安装依赖项
 
 如果您使用的是[Enthought Canopy ](https://www.enthought.com/products/canopy/)[EDM](https://www.enthought.com/products/edm/)或[Anaconda](http://continuum.io/downloads)，则[在Mac OS X上安装依赖项](https://pysph.readthedocs.io/en/latest/installation.html#installing-deps-osx)一节中的说明将非常有用，因为这些说明是相同的。以下是针对您希望使用随所使用的Linux发行版一起发行的本机Python软件包的情况。
 
@@ -424,7 +424,7 @@ $ export CXX=icpc
 
 
 
-## 在Ubuntu 18.04上安装依赖项
+### 在Ubuntu 18.04上安装依赖项
 
 在Ubuntu 18.04上，使用ZOLTAN安装PySPH应该相对简单，如下所示：
 
@@ -473,7 +473,7 @@ $ pip install --no-cache-dir pysph
 
 
 
-## 在Mac OS X上安装依赖项
+### 在Mac OS X上安装依赖项
 
 在OS X上，最好的选择是安装[Enthought Canopy](https://www.enthought.com/products/canopy/)，[EDM](https://www.enthought.com/products/edm/)或[Anaconda](http://continuum.io/downloads) 或其他一些Python发行版。通过安装XCode确保已安装gcc或clang。见[这个](http://stackoverflow.com/questions/12228382/after-install-xcode-where-is-clang) ，如果你安装了XCode，但无法找到铛或GCC。
 
@@ -493,7 +493,7 @@ $ export MACOSX_DEPLOYMENT_TARGET=10.9
 
 并再次运行您的命令（将以上内容替换为其他shell上的相应行）。这是必要的，因为您的Python是使用较旧的部署目标进行编译的，并且您安装的当前XCode版本与此不兼容。通过设置环境变量，您可以允许compyle使用较新的版本。如果可行，最好在默认环境中（`.bashrc`对于bash shell）进行设置，这样就不必每次都这样做。
 
-### OSX上的OpenMP
+#### OSX上的OpenMP
 
 MacOS上可用的默认clang编译器使用LLVM后端，不支持[OpenMP](http://openmp.org/)。有两种支持OpenMP的方法。首先涉及为clang安装OpenMP支持。可以使用以下命令执行[brew](http://brew.sh/)：
 
@@ -522,7 +522,7 @@ $ export CXX=g++-9
 
 
 
-### 使用EDM
+#### 使用EDM
 
 使用Enthought Deployment Manager（[EDM](https://www.enthought.com/products/edm/)）安装所有依赖项非常容易。
 
@@ -538,7 +538,7 @@ $ export CXX=g++-9
 
 - 完成此操作后，您应该能够相对轻松地安装PySPH，请参阅“ [构建和安装PySPH”](https://pysph.readthedocs.io/en/latest/installation.html#building-pysph)。
 
-### 使用Canopy
+#### 使用Canopy
 
 下载适合您平台的Canopy Express安装程序（也可以使用完整的安装程序）。安装后启动Canopy，以初始化您的用户环境。如果您已将Canopy设置为默认的Python，那么一切都会很好，否则请从Canopy编辑器的“工具”菜单中启动Canopy终端，然后在下面键入命令。
 
@@ -560,7 +560,7 @@ $ enpkg mayavi
 
 
 
-### 使用Anaconda
+#### 使用Anaconda
 
 安装Anaconda或[miniconda_之后](https://pysph.readthedocs.io/en/latest/installation.html#id28)，您需要确保已安装依赖项。您可以创建一个单独的环境，如下所示：
 
@@ -580,7 +580,7 @@ $ conda install -c menpo mayavi
 
 
 
-### 在OS X上安装mpi4py和Zoltan
+#### 在OS X上安装mpi4py和Zoltan
 
 为了构建/安装[mpi4py，](http://mpi4py.scipy.org/)首先必须安装MPI库。可以通过[Homebrew](http://brew.sh/)轻松完成以下操作（您需要为此进行`brew` 安装，但这相对容易做到）：
 
